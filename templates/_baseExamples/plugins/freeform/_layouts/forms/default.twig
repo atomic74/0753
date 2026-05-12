@@ -1,0 +1,126 @@
+{# Place in templates/default/_layouts/forms/default.twig #}
+
+{{ form.renderTag({
+  attributes: {
+    row: {
+      id: "form-row",
+      class: "form-row",
+    },
+  },
+  buttons: {
+    attributes: {
+      submit: { class: "btn btn-default mt-6" },
+    },
+  },
+  fields: {
+    "@global": {
+      attributes: {
+        container: { class: "form-group" },
+        input: { class: "form-control" },
+        label: { class: "form-label" },
+        instructions: { class: "help-text" },
+        error: { class: "invalid-feedback" },
+      },
+    },
+    ":required": {
+      attributes: {
+        label: { "+class": "required" },
+      },
+    },
+  },
+}) }}
+
+{% if form.hasErrors %}
+  <div class="form-errors">
+
+     {% if form.errorMessage == 'Sorry, there was an error submitting the form. Please try again.' %}
+        There are problems with your form submission.<br>
+        Please review the form and try submitting again.
+     {% else %}
+       {{ form.errorMessage }}
+     {% endif %}
+
+    {% if form.errors|length %}
+      <ul>
+        {% for error in form.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% for row in form %}
+  <div class="form-row">
+    {% for field in row %}
+      {% if field.type == "checkboxes" %}
+
+        <div{{ field.attributes.container }}>
+
+          {{ field.renderLabel() }}
+          {{ field.renderInstructions() }}
+
+          {% for index, option in field.options %}
+            <div class="flex items-center mb-1">
+              <input type="checkbox"
+                name="{{ field.handle }}[]"
+                value="{{ option.value }}"
+                id="{{ field.idAttribute }}-{{ index }}"
+                class="form-check-input"
+                {{ option.value in field.value ? 'checked' }}
+              />
+
+              <label class="ml-2 text-base font-normal" for="{{ field.idAttribute }}-{{ index }}">
+                {{ option.label|t|raw }}
+              </label>
+            </div>
+          {% endfor %}
+          {{ field.renderErrors() }}
+        </div>
+
+      {% elseif field.type == "html" %}
+
+        <div class="default-content">
+          {{ field.render() }}
+        </div>
+
+      {% elseif field.type == "rich-text" %}
+
+        <div class="default-content">
+          {{ field.render() }}
+        </div>
+
+      {% elseif field.type == "checkbox" %}
+
+        <div class="flex mb-4">
+          <input type="checkbox"
+            name="{{ field.handle }}[]"
+            value="{{ field.value }}"
+            id="{{ field.idAttribute }}"
+            class="form-check-input"
+            {{ field.value in field.value ? 'checked' }}
+          />
+
+          <div class="ml-2 -mt-1">
+            {{ field.renderErrors() }}
+            <label class="text-base font-normal {{ field.required ? 'required' }}" for="{{ field.idAttribute }}">
+              {{ field.label|t|raw }}
+            </label>
+          </div>
+        </div>
+
+      {% elseif field.type == "radios" %}
+        <div class="radios">
+          {{ field.render() }}
+        </div>
+
+      {% else %}
+
+        {{ field.render() }}
+
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endfor %}
+
+{{ form.renderClosingTag }}

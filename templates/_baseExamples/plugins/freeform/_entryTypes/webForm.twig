@@ -1,0 +1,46 @@
+{# Place in templates/default/_entryTypes/webForm.twig #}
+
+{% extends "_layouts/base" %}
+{% set uri = entry.uri %}
+{% set showSidebar = entry.hideSidebar != 1 %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+{% set formHandle = entry.form.handle %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+        {% block mainContent %}
+          <h1 class="main-heading">{{ pageHeading }}</h1>
+
+          {# This will display the success message configured directly in the form settings #}
+          {% if craft.app.request.getQueryParam('success') == '✓' %}
+            <div class="px-10 mt-10 text-xl text-center bg-gray-600 rounded-md py-7">{{ craft.freeform.form(formHandle).settings.successMessage }}</div>
+          {% endif %}
+
+          {% if entry.mainContent is not empty %}
+            <div class="max-w-5xl mx-auto mt-10 mb-4">
+              <div class="default-content">
+                {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
+              </div>
+              <div class="divider default">
+                <hr class="default">
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="mt-6 default-content">
+            <p>Fields marked with <label class="required"></label> are required.</p>
+          </div>
+
+          {# This will render the form #}
+          {{ craft.freeform.form(formHandle, {
+            id: formHandle,
+            returnUrl: craft.app.request.absoluteUrl ~ '?success=✓'
+          }).render() }}
+
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{#
+ # 404 template
+ # ------------
+ #
+ # This template is loaded whenever Craft cannot figure out how to
+ # respond to an incoming request. No setup is involved to get your
+ # 404 page working; you just need to call it 404.html and put it
+ # at the root of your craft/templates/ folder.
+ #
+ # You can also create 400.html, 403.html, 500.html, and 503.html
+ # templates if you’d like. If Craft can’t find an error template
+ # to match the error code, it will just use the one in
+ # craft/app/templates/ instead.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HTTP error 404 - Page Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ craft.tungsten.assetUrl('styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <div class="max-w-lg px-4 py-12 mx-auto text-center text-gray-700">
+    <h1 class="mt-6 mb-8 text-3xl text-gray-800 md:text-4xl">Page Not Found</h1>
+    <p class="mb-4">The page you are looking for may have been <strong>moved or removed</strong>.</p>
+    <p>Please go to the <a class="text-blue-700 underline" href="{{ url('/') }}">home page</a> and use the site navigation to locate the information of your interest.</p>
+  </div>
+</body>
+</html>
