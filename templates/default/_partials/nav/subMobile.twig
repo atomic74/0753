@@ -39,8 +39,8 @@
   {% endif %}
 
   {% if subpages is defined and subpages| length %}
-    <div class="px-4 text-white bg-gray-400 mb-4 md:hidden">
-      <button class="w-full" type="button" id="sub-nav-toggle" aria-label="Sub Navigation Toggle" title="Sub Navigation Toggle" aria-expanded="false" aria-controls="sub-nav-body">
+    <div class="mb-4 text-white bg-brand-wine md:hidden">
+      <button class="w-full px-4" type="button" id="sub-nav-toggle" aria-label="Sub Navigation Toggle" title="Sub Navigation Toggle" aria-expanded="false" aria-controls="sub-nav-body">
         <div class="flex items-center justify-between py-4 text-xl font-bold uppercase">
           <div class="flex items-center">
             {{ svg("@webroot/img/icons/bars-solid.svg")|attr({class: 'h-5 w-5 inline-block mr-2'}) }} {{ currentPageParentTitle }}
@@ -54,7 +54,7 @@
         </div>
       </button>
       <div id="sub-nav-body" class="hidden">
-        <ul class="pb-2">
+        <ul class="px-4 pb-2 bg-brand-brown">
           {% nav subpage in subpages.all %}
             <li class="{% if subpage.uri == uri %}bg-white/20{% endif %}">
               <a class="block py-2 text-lg pl-7" href="{{ subpage.url }}">{{ subpage.title }}</a>
