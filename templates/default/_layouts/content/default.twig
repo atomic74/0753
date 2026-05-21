@@ -1,16 +1,20 @@
 <div id="page">
-  <div id="crumbs" class="hidden md:block">
-    {% block crumbs %}
-      {% include '_partials/nav/crumbs' %}
-    {% endblock %}
-  </div>
-
-  <div id="content" class="flex gap-8 justify-items-start">
-    <div id="main-content-start" class="flex-grow max-w-full">
+  {% if showSidebar is defined and showSidebar %}
+    <div id="content" class="flex gap-8 justify-items-start">
+      <div id="main-content-start" class="flex-grow max-w-full">
+  {% else %}
+    <div id="content" class="max-w-5xl mx-auto">
+      <div id="main-content-start">
+  {% endif %}
       {% block mainContent %}
         {% cache %}
-          <h1 class="main-heading">{{ pageHeading }}</h1>
-          <div class="default-content">
+          {% if entry.intro is defined and entry.intro is not empty %}
+            <div class="max-w-3xl mx-auto mt-8 text-2xl text-center">
+              {{ entry.intro }}
+            </div>
+            <div class="bg-chevron-line h-[11px] bg-repeat-x my-10 w-1/2 md:w-1/3 mx-auto"></div>
+          {% endif %}
+          <div class="mt-10 default-content">
             {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
           </div>
         {% endcache %}
@@ -18,16 +22,13 @@
     </div>
 
     {% if showSidebar is defined and showSidebar %}
-      <div id="sidebar" class="hidden w-[280px] flex-shrink-0 md:block">
+      <div id="sidebar" class="hidden w-[310px] flex-shrink-0 md:block mt-10">
         {% block subNav %}
           {% include '_partials/nav/sub' %}
         {% endblock %}
 
-        {# {% block sidebarContent %}
-          {% cache %}
-            {% include '_partials/contentBuilder' with {contentField: entry.sidebarContent, blocksDir: 'sidebarContent'} %}
-          {% endcache %}
-        {% endblock %} #}
+        {% block sidebarContent %}
+        {% endblock %}
       </div>
     {% endif %}
   </div>

@@ -5,10 +5,10 @@ html {
 
 @layer components {
   .main-heading {
-    @apply text-4xl font-semibold;
+    @apply text-5xl lg:text-6xl font-bold leading-tight tracking-wide text-white text-center;
   }
 
   .btn {
-    @apply inline-block uppercase mb-6 py-3 px-4 shadow;
+    @apply inline-block mb-6 py-4 px-8 rounded-full tracking-wide text-xl font-bold text-white bg-brand-green hover:bg-brand-blue;
   }
 }

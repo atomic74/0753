@@ -1,9 +1,48 @@
 <footer>
-  <div class="mt-8 bg-gray-300">
-    <div class="xl:container">
-      <div class="p-2 md:p-4">
-        <p class="text-sm text-center">&copy;{{ 'now'|date('Y') }} {{ siteName }}. All Rights Reserved.</p>
-        {% include '_partials/signature' %}
+  <div class="mt-8 bg-brand-beige border-t-[10px] border-t-brand-brown pt-8">
+    <div class="px-4 xl:container xl:px-0">
+      <div class="justify-between md:flex">
+        <div>
+          <div class="text-xl font-bold text-brand-wine">Mon Valley Youth &amp; Teen Association, Inc.</div>
+          <div class="pt-4 md:flex">
+            <div class="flex group">
+              {{ svg("@webroot/img/icons/map-marker-alt-solid.svg")|attr({class: 'h-7 w-5 inline-block text-brand-gold group-hover:text-brand-wine'}) }}
+              <div class="ml-3">
+                160 Thompson Ave<br>
+                Donora, PA 15033<br>
+                <a href="https://maps.app.goo.gl/fWLfkixHVeUCKTfQ7" target="_blank" class="underline text-brand-link group-hover:no-underline">map</a>
+              </div>
+            </div>
+            <div class="mt-4 md:ml-12 md:mt-0">
+              <div class="mb-3 group">
+                {{ svg("@webroot/img/icons/envelope-solid.svg")|attr({class: 'h-5 w-5 inline-block text-brand-gold mr-3 group-hover:text-brand-wine'}) }}
+                <a href="mailto:mvyata@comcast.net" class="underline text-brand-link group-hover:no-underline">mvyata@comcast.net</a>
+              </div>
+              <div class="group">
+                {{ svg("@webroot/img/icons/phone-alt-solid.svg")|attr({class: 'h-5 w-5 inline-block text-brand-gold mr-3 group-hover:text-brand-wine'}) }}
+                <a href="tel:724-379-4889" class="underline text-brand-link group-hover:no-underline">724-379-4889</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mt-6 text-xl font-bold text-brand-wine md:mt-0">Stay Up to Date</div>
+          <div class="pt-4 group">
+            {{ svg("@webroot/img/icons/facebook-f.svg")|attr({class: 'h-5 w-5 inline-block text-brand-gold mr-3 group-hover:text-brand-wine'}) }}
+            <a href="https://www.facebook.com/MVYATA" class="underline text-brand-link group-hover:no-underline">Facebook Page</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4 mt-6 border-t border-brand-gold">
+        <p class="text-sm">
+          &copy;{{ 'now'|date('Y') }} Mon Valley Youth &amp; Teen Association, Inc. All Rights Reserved.
+          <a href="{{ url('privacy-policy') }}" class="underline text-brand-link">Privacy Policy</a>
+          |
+          <a href="{{ url('accessibility-statement') }}" class="underline text-brand-link">Accessibility Statement</a>
+        </p>
+        <div class="py-4">
+          {% include '_partials/signature' %}
+        </div>
       </div>
     </div>
   </div>

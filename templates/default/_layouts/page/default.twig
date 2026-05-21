@@ -3,6 +3,19 @@
     {% include '_partials/header' %}
   {% endblock %}
 
+  {% block mainHeading %}
+  {% endblock %}
+
+  <div id="crumbs" class="hidden md:block">
+    <div class="py-3 bg-brand-beige">
+      <div class="px-4 xl:px-0 xl:container">
+        {% block crumbs %}
+          {% include '_partials/nav/crumbs' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
   {% block subNavMobile %}
     {% include '_partials/nav/subMobile' %}
   {% endblock %}

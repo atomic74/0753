@@ -1,0 +1,19 @@
+{% set testimonialOptions = block.testimonialOptions %}
+
+{% if testimonialOptions|length %}
+  {% set testimonialOptionValues = [] %}
+  {% for option in testimonialOptions %}
+    {% set testimonialOptionValues = testimonialOptionValues|push(option.value) %}
+  {% endfor %}
+  {% set testimonial = craft.entries.section('testimonials').testimonialOptions(testimonialOptionValues).orderBy('RAND()').one %}
+  <div class="relative pt-[72px] px-[48px] pb-[35px] text-xl text-white bg-brand-blue rounded-tl-2xl rounded-br-2xl my-6">
+    <div class="absolute top-5 left-5"><img src="/img/icon-before-quote.png"></div>
+    <p class="">
+      {{ testimonial.quote }}
+    </p>
+    <p class="mt-6 italic font-bold">
+      {{ testimonial.firstName }} {{ testimonial.lastName|first }}.{% if testimonial.authorDescription %} &mdash; {{ testimonial.authorDescription }}{% endif %}
+    </p>
+    <div class="absolute bottom-5 right-5"><img src="/img/icon-after-quote.png"></div>
+  </div>
+{% endif %}

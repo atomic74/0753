@@ -6,7 +6,7 @@
 
 .redactor {
   p {
-    @apply mb-3 leading-6;
+    @apply mb-3 leading-6 text-lg;
 
     a {
       @apply text-content-link underline hover:no-underline;
@@ -21,7 +21,7 @@
 
 .default-content {
   p {
-    @apply mb-4;
+    @apply mb-4 text-lg;
   }
 
   p,
@@ -29,10 +29,17 @@
     a {
       @apply text-content-link underline hover:no-underline;
     }
+
+  }
+
+  .callout {
+    a {
+      @apply text-inherit;
+    }
   }
 
   h2 {
-    @apply font-bold text-content-h2 text-3xl leading-tight mt-8 mb-3;
+    @apply font-bold text-content-h2 text-4xl md:text-5xl leading-tight mt-8 mb-3;
 
     + h3,
     + h4 {
@@ -41,7 +48,7 @@
   }
 
   h3 {
-    @apply font-bold text-content-h3 text-xl leading-tight mt-6 mb-2;
+    @apply font-bold text-content-h3 text-3xl md:text-4xl leading-tight mt-6 mb-2;
 
     + h4 {
       @apply mt-2;
@@ -49,15 +56,15 @@
   }
 
   h4 {
-    @apply font-bold text-content-h4 text-lg leading-tight mt-4 mb-1.5;
+    @apply font-bold text-content-h4 text-2xl md:text-3xl leading-tight mt-4 mb-1.5;
   }
 
   ul {
-    @apply list-disc list-outside mb-4 pl-4 ml-4;
+    @apply list-disc list-outside mb-4 pl-4 ml-4 text-lg;
   }
 
   ol {
-    @apply list-decimal list-outside mb-4 pl-4 ml-4;
+    @apply list-decimal list-outside mb-4 pl-4 ml-4 text-lg;
   }
 
   li {
@@ -191,14 +198,10 @@
 }
 
 .img-border {
-  @apply ring-2 ring-content-image-ring ring-offset-2;
+  @apply rounded-xl;
 }
 
 // DOCUMENTS ----------------------------------------------------------------
-
-.documents {
-  @apply mb-6;
-}
 
 .doc-listing {
   @apply space-y-3;
@@ -499,6 +502,10 @@ p.mobile-note-wide {
     &.square {
       @apply flex-shrink-0 flex-grow-0 w-[180px];
     }
+  }
+
+  img {
+    @apply rounded-xl;
   }
 }
 

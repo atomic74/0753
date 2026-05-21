@@ -41,11 +41,11 @@
 
   {% if subpages is defined and subpages | length %}
     <div id="sub-nav" class="sub-nav">
-      <h2 class="px-4 py-3 text-xl font-bold text-white bg-gray-500 ">{{ currentPageParentTitle }}</h2>
-      <ul class="p-4 pb-10">
+      <h2 class="py-5 text-3xl font-bold text-white px-7 bg-brand-wine rounded-tl-2xl ">{{ currentPageParentTitle }}</h2>
+      <ul class="divide-y bg-brand-brown rounded-br-2xl divide-white/20">
         {% nav subpage in subpages.all %}
-          <li class="{{ subpage.uri == uri ? 'text-gray-700' : 'text-gray-500' }}">
-            <a class="block py-1.5 text-lg font-bold hover:text-gray-700" href="{{ subpage.url }}">{{ subpage.title }}</a>
+          <li>
+            <a class="block px-7 py-3 text-xl font-bold text-white hover:bg-white/20 {{ subpage.uri == uri ? 'bg-white/20' }}" href="{{ subpage.url }}">{{ subpage.title }}</a>
           </li>
         {% endnav %}
       </ul>

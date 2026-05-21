@@ -3,8 +3,32 @@
 {% set showSidebar = entry.hideSidebar != 1 %}
 {% set pageHeading = entry.pageHeading|default(entry.title) %}
 
+{% switch entry.headingBgColor %}
+  {% case "gold" %}
+    {% set headingBgPattern = 'bg-pattern-gold' %}
+  {% case "green" %}
+    {% set headingBgPattern = 'bg-pattern-green' %}
+  {% case "purple" %}
+    {% set headingBgPattern = 'bg-pattern-purple' %}
+  {% case "wine" %}
+    {% set headingBgPattern = 'bg-pattern-wine' %}
+  {% default %}
+    {% set headingBgPattern = 'bg-pattern-blue' %}
+{% endswitch %}
+
 {% block pageLayout %}
   {% embed '_layouts/page/default' %}
+    {% block mainHeading %}
+      <div class="py-12 md:py-16 {{ headingBgPattern }}">
+        <div class="px-4 xl:px-0 xl:container">
+          <h1 class="main-heading">{{ pageHeading }}</h1>
+        </div>
+      </div>
+    {% endblock %}
+    {% block contentLayout %}
+      {% embed '_layouts/content/default' %}
+      {% endembed %}
+    {% endblock %}
   {% endembed %}
   
   {# Fancybox js and css code #}

@@ -1,0 +1,47 @@
+{% extends "_layouts/base" %}
+{% set showSidebar = true %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% set people = craft.entries.section('team').all %}
+
+{% block pageLayout %}
+  {% embed "_layouts/page/default" %}
+    {% block mainHeading %}
+      <div class="py-12 md:py-16 bg-pattern-blue">
+        <div class="px-4 xl:px-0 xl:container">
+          <h1 class="main-heading">{{ pageHeading }}</h1>
+        </div>
+      </div>
+    {% endblock %}
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+        {% block mainContent %}
+          {% if people %}
+            <div class="divide-y-2 divide-brand-gold/25">
+            {% for person in people %}
+              <div class="py-6">
+                <h2 class="mb-3 text-4xl font-bold text-brand-brown">{{ person.title }}</h2>
+                <h3 class="mb-3 text-2xl font-bold text-brand-wine-light">{{ person.jobTitle }}</h3>
+                <p class="mb-3">{{ person.shortJobDescription }}</p>
+                <div class="flex">
+                  <div class="mr-6 group">
+                    {{ svg("@webroot/img/icons/envelope-solid.svg")|attr({class: 'h-5 w-5 inline-block text-brand-gold mr-2 group-hover:text-brand-wine'}) }}
+                    <a href="mailto:{{ person.email }}" class="font-bold underline group-hover:no-underline">Email {{ person.firstName }}</a>
+                  </div>
+                  <div class="group">
+                    {{ svg("@webroot/img/icons/phone-alt-solid.svg")|attr({class: 'h-5 w-5 inline-block text-brand-gold mr-2 group-hover:text-brand-wine'}) }}
+                    <a href="tel:{{ person.phone }}" class="font-bold">{{ person.phone }}</a>
+                  </div>
+                </div>
+                {% if person.bio is not empty %}
+                  {% include '_partials/reveal' with {title: 'Read Bio', content: person.bio} only %}
+                {% endif %}
+              </div>
+            {% endfor %}
+            </div>
+          {% endif %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

@@ -4,7 +4,7 @@ module.exports = {
   content: ['./templates/**/*.twig'],
   theme: {
     fontFamily: {
-      primary: ['ui-sans-serif', 'sans-serif'],
+      primary: ['Nunito', 'sans-serif'],
       //   secondary: ['ui-sans-serif', 'sans-serif'],
     },
     screens: {
@@ -25,30 +25,39 @@ module.exports = {
       colors: {
         brand: {
           // put the custom site color here
-          blue: colors.blue[500],
+          blue: '#01455e',
+          wine: '#830137',
+          'wine-light': '#854158',
+          brown: '#430000',
+          gold: '#b4782c',
+          beige: '#faf5ef',
+          green: '#016367',
+          purple: '#3b3d5a',
+          text: '#404040',
+          link: '#1268c1',
         },
         content: {
-          'text': colors.gray[600],
-          'link': colors.blue[700],
-          'h2': colors.gray[600],
-          'h3': colors.gray[600],
-          'h4': colors.gray[600],
-          'divider': colors.gray[300],
+          'text': '#404040',
+          'link': '#1268c1',
+          'h2': '#830137',
+          'h3': '#430000',
+          'h4': '#854158',
+          'divider': '#b4782c',
           image: {
-            'caption': colors.gray[600],
+            'caption': '#430000',
             'ring': colors.gray[300],
           },
           table: {
-            'heading': colors.gray[800],
-            'heading-bg': colors.gray[200],
-            'border': colors.gray[400],
-            'grid-row': colors.gray[300],
-            'grid-column': colors.gray[300],
-            'alt-row-bg': colors.gray[200],
+            'heading': '#fff',
+            'heading-bg': '#430000',
+            'border': '#430000',
+            'grid-row': '#430000',
+            'grid-column': '#430000',
+            'alt-row-bg': '#faf5ef',
           },
           doc: {
-            'size': colors.gray[700],
-            'description': colors.gray[700],
+            'size': '#797979',
+            'description': colors.gray[500],
             'card-bg': colors.white,
             'card-ring': colors.gray[300],
           },
@@ -60,12 +69,14 @@ module.exports = {
           pinterest: '#cb2027',
         },
       },
-      backgroundImage: {
-        // 'callout-red': "url('/img/callout-graphic_red.svg'), linear-gradient(to right, #E7751F, #D33D4C)",
-      },
-      boxShadow: {
-        // 'btn' : '2px 2px 0 rgba(0, 0, 0, .5)',
-      },
+    },
+    backgroundImage: {
+      'pattern-blue': "url('/img/background-blue.png')",
+      'pattern-gold': "url('/img/background-gold.png')",
+      'pattern-green': "url('/img/background-green.png')",
+      'pattern-purple': "url('/img/background-purple.png')",
+      'pattern-wine': "url('/img/background-wine-light.png')",
+      'chevron-line': "url('/img/chevron-divider-line-segment.png')",
     },
   },
   variants: {

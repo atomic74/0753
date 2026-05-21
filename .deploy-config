@@ -1,6 +1,6 @@
 CRAFT_VERSION=craft5
-SITE_CODE=
+SITE_CODE=0753
 BETA_SERVER=dev-2.nlcnet.net
-BETA_DOMAIN=XXXX.craft5.atomicbeta.com
+BETA_DOMAIN=0753.craft5.atomicbeta.com
 LIVE_SERVER=
 SITE_DOMAIN=
