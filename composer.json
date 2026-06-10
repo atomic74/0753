@@ -21,14 +21,14 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/aws-s3": "2.3.0",
-    "craftcms/ckeditor": "^5.4.0",
-    "craftcms/cms": "5.9.18",
+    "craftcms/aws-s3": "^2.3.1",
+    "craftcms/ckeditor": "^5.5.0",
+    "craftcms/cms": "^5.10.5",
     "tungsten/tungsten": "^4.0",
-    "vaersaagod/seomate": "3.2.0",
+    "vaersaagod/seomate": "^3.3.0",
     "verbb/expanded-singles": "3.0.3",
-    "verbb/field-manager": "4.0.3",
-    "verbb/tablemaker": "5.0.8",
+    "verbb/field-manager": "^4.0.4",
+    "verbb/tablemaker": "^5.0.9",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
