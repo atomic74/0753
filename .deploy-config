@@ -2,5 +2,5 @@ CRAFT_VERSION=craft5
 SITE_CODE=0753
 BETA_SERVER=dev-2.nlcnet.net
 BETA_DOMAIN=0753.craft5.atomicbeta.com
-LIVE_SERVER=
-SITE_DOMAIN=
+LIVE_SERVER=prod-5.nlcnet.net
+SITE_DOMAIN=mvyata.org
